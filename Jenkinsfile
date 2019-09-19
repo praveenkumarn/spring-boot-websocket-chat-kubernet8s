@@ -1,4 +1,11 @@
-// Powered by Kube 
+#!/usr/bin/env groovy
+ 
+/**
+        * Sample Jenkinsfile for SpringBoot-Chat Application Pipeline
+        * from https://github.com/praveenkumarn/spring-boot-websocket-chat-Kube/edit/master/Jenkinsfile
+        * by Praveen
+ */
+
 
 timestamps {
 
@@ -53,6 +60,7 @@ cat ~/pass.txt | sudo -S docker login --username praveenkumarnagarajan --passwor
 
 sudo -S docker push praveenkumarnagarajan/spring-boot-websocket-chat-demo:0.0.1-SNAPSHOT 
  """ 
+ cleanWs()
 	}
 }
 }

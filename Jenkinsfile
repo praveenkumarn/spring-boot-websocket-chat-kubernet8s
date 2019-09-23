@@ -38,9 +38,7 @@ sudo -S kubectl get deployment
 
 sudo -S kubectl get services
 
-sudo -S kubectl delete services kubernetes-springboot
 
-sudo -S kubectl delete -n default deployment kubernetes-springboot
 
 sudo -S docker build -t spring-boot-websocket-chat-demo .
 

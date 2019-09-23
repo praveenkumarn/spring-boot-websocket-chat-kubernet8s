@@ -35,13 +35,12 @@ sudo -S docker image ls
 sudo -S docker container ls
 
 sudo -S kubectl get deployment
-
 sudo -S kubectl get services
 
-
+sudo -S kubectl delete services kubernetes-springboot
+sudo -S kubectl delete -n default deployment kubernetes-springboot
 
 sudo -S docker build -t spring-boot-websocket-chat-demo .
-
 sudo -S docker image ls
 
 sudo -S docker tag spring-boot-websocket-chat-demo praveenkumarnagarajan/spring-boot-websocket-chat-demo:0.0.1-SNAPSHOT
@@ -54,9 +53,7 @@ sudo -S kubectl run kubernetes-springboot --image=praveenkumarnagarajan/spring-b
 sudo -S kubectl expose deployment/kubernetes-springboot --type="NodePort" --port 8080
 
 sudo -S kubectl get nodes
-
 sudo -S kubectl get services
-
 sudo -S kubectl describe services/kubernetes-springboot
 
 

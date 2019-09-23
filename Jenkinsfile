@@ -46,10 +46,13 @@ sudo -S docker build -t spring-boot-websocket-chat-demo .
 
 sudo -S docker image ls
 
-sudo -S kubectl run kubernetes-springboot --image=praveenkumarnagarajan/spring-boot-websocket-chat-demo:0.0.1-SNAPSHOT --port=8080
+sudo -S docker tag spring-boot-websocket-chat-demo praveenkumarnagarajan/spring-boot-websocket-chat-demo:0.0.1-SNAPSHOT
+cat ~/pass.txt | sudo -S docker login --username praveenkumarnagarajan --password-stdin
+sudo -S docker push praveenkumarnagarajan/spring-boot-websocket-chat-demo:0.0.1-SNAPSHOT 
+sudo -S docker pull 
 
 sudo -S docker image ls
-
+sudo -S kubectl run kubernetes-springboot --image=praveenkumarnagarajan/spring-boot-websocket-chat-demo:0.0.1-SNAPSHOT --port=8080
 sudo -S kubectl expose deployment/kubernetes-springboot --type="NodePort" --port 8080
 
 sudo -S kubectl get nodes
@@ -58,11 +61,7 @@ sudo -S kubectl get services
 
 sudo -S kubectl describe services/kubernetes-springboot
 
-sudo -S docker tag spring-boot-websocket-chat-demo praveenkumarnagarajan/spring-boot-websocket-chat-demo:0.0.1-SNAPSHOT
 
-cat ~/pass.txt | sudo -S docker login --username praveenkumarnagarajan --password-stdin
-
-sudo -S docker push praveenkumarnagarajan/spring-boot-websocket-chat-demo:0.0.1-SNAPSHOT 
  """ 
  cleanWs()
 	}

@@ -15,7 +15,7 @@ You can checkout the live version of the application at https://spring-ws-chat.h
 **1. Clone the application**
 
 ```bash
-git clone https://github.com/callicoder/spring-boot-websocket-chat-demo.git
+git clone https://github.com/praveenkumarn/spring-boot-websocket-chat-Kube.git
 ```
 
 **2. Build and run the app using maven**
@@ -34,6 +34,6 @@ mvn spring-boot:run
 
 ## Learn More
 
-You can find the tutorial for this application on my blog -
+You can find the tutorial for this application on callicoder blog -
 
 https://www.callicoder.com/spring-boot-websocket-chat-example/

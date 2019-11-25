@@ -16,7 +16,7 @@ node ('Kubernetes') {
 	}
 	stage ('K8s_BnD - Build') {
  	
-	withMaven(maven: 'maven') { 
+	withMaven(maven: 'M2_HOME') { 
  			if(isUnix()) {
  				sh "mvn -f pom.xml clean package " 
 			} else { 

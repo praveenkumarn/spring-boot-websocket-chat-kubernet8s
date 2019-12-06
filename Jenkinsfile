@@ -40,6 +40,8 @@ kubectl get services
 #kubectl delete services kubernetes-springboot
 #kubectl delete -n default deployment kubernetes-springboot
 
+string process_count
+
 process_count=`kubectl get services | grep kubernetes-springboot | grep -v grep | wc -l`
 if [ "${process_count}" -eq "0" ] ; then
      echo "kubernetes-springboot not running.No action required"

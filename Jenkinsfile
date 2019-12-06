@@ -37,8 +37,8 @@ docker container ls
 kubectl get deployment
 kubectl get services
 
-kubectl delete services kubernetes-springboot
-kubectl delete -n default deployment kubernetes-springboot
+#kubectl delete services kubernetes-springboot
+#kubectl delete -n default deployment kubernetes-springboot
 
 docker build -t spring-boot-websocket-chat-demo .
 docker image ls

@@ -22,7 +22,8 @@ node ('Kubernetes') {
 			} else { 
  				bat "mvn -f pom.xml clean package " 
 			} 
- 		}		// Shell Pre-build step
+ 		}		
+// Shell Pre-build step
  		
 sh label: '', script: '''
 process_count=`kubectl get services | grep kubernetes-springboot | grep -v grep | wc -l`

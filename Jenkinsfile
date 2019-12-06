@@ -22,7 +22,19 @@ node ('Kubernetes') {
 			} else { 
  				bat "mvn -f pom.xml clean package " 
 			} 
- 		}		// Shell build step
+ 		}		// Shell Pre-build step
+ 		
+sh label: '', script: '''
+process_count=`kubectl get services | grep kubernetes-springboot | grep -v grep | wc -l`
+if [ "${process_count}" -eq "0" ] ; then
+     echo "kubernetes-springboot not running.No action required"
+else
+     echo "kubernetes-springboot services running, so delete the services and deployment"
+    	kubectl delete services kubernetes-springboot
+        kubectl delete -n default deployment kubernetes-springboot
+fi
+'''
+// Shell build step
 sh """ 
 #!/bin/bash
 pwd
@@ -37,8 +49,8 @@ docker container ls
 kubectl get deployment
 kubectl get services
 
-kubectl delete services kubernetes-springboot
-kubectl delete -n default deployment kubernetes-springboot
+#kubectl delete services kubernetes-springboot
+#kubectl delete -n default deployment kubernetes-springboot
 
 
 docker build -t spring-boot-websocket-chat-demo .

@@ -43,13 +43,13 @@ pwd
 id
 ls -lrt
 java -version
-process_count=`kubectl get services | grep kubernetes-springboot | grep -v grep | wc -l`
+process_count=`kubectl get services | grep chat-server | grep -v grep | wc -l`
 if [ "${process_count}" -eq "0" ] ; then
-     echo "kubernetes-springboot not running.No action required"
+     echo "chat-server not running.No action required"
 else
      echo "kubernetes-springboot services running, so delete the services and deployment"
-    	kubectl delete services kubernetes-springboot
-        kubectl delete -n default deployment kubernetes-springboot
+    	kubectl delete services chat-server
+        kubectl delete -n default deployment chat-server
 fi
 
 
@@ -83,12 +83,11 @@ docker pull praveenkumarnagarajan/spring-boot-websocket-chat-demo:0.0.1-SNAPSHOT
 docker image ls
 kubectl get nodes
 kubectl get services
-kubectl run kubernetes-springboot --image=praveenkumarnagarajan/spring-boot-websocket-chat-demo:0.0.1-SNAPSHOT --port=8080
-kubectl expose deployment/kubernetes-springboot --type="NodePort" --port 8080
+kubectl apply -f k8s-deployment.yaml
 
 kubectl get nodes
 kubectl get services
-kubectl describe services/kubernetes-springboot """
+kubectl describe services/chat-server """
  cleanWs()
 }
 }
